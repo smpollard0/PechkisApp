@@ -13,11 +13,11 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/debug/AndroidManifest.xml:6:5-66
-15-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/debug/AndroidManifest.xml:6:22-64
+15-->/home/spencer/Desktop/FlutterPractice/PechkisApp/android/app/src/debug/AndroidManifest.xml:6:5-66
+15-->/home/spencer/Desktop/FlutterPractice/PechkisApp/android/app/src/debug/AndroidManifest.xml:6:22-64
 16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-16-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/main/AndroidManifest.xml:2:5-71
-16-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/main/AndroidManifest.xml:2:22-68
+16-->/home/spencer/Desktop/FlutterPractice/PechkisApp/android/app/src/main/AndroidManifest.xml:2:5-71
+16-->/home/spencer/Desktop/FlutterPractice/PechkisApp/android/app/src/main/AndroidManifest.xml:2:22-68
 17    <uses-permission android:name="android.permission.BLUETOOTH" />
 17-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:11:5-68
 17-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:11:22-65

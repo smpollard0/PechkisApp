@@ -4,7 +4,7 @@
             "outputFile": "com.example.audiophyx.app-mergeDebugResources-13:/values/values.xml",
             "map": [
                 {
-                    "source": "/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/main/res/values/styles.xml",
+                    "source": "/home/spencer/Desktop/FlutterPractice/PechkisApp/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
