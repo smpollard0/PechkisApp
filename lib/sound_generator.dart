@@ -252,12 +252,14 @@ class _MyAppState extends State<ToneGen> {
                                       isPlaying
                                           ? {SoundGenerator.stop()}
                                           : {
+                                              print(startSweep),
                                               for (var i = startSweep;
                                                   i < endSweep + .1;
                                                   i = i + 0.005)
                                                 {
                                                   SoundGenerator.setFrequency(
                                                       i),
+                                                  print(i),
                                                   SoundGenerator.play(),
                                                 },
                                               SoundGenerator.stop()
