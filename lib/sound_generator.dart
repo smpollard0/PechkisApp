@@ -56,7 +56,7 @@ class _MyAppState extends State<ToneGen> {
   double balance = 0;
   double volume = 1;
   waveTypes waveType = waveTypes.SINUSOIDAL;
-  List<String> sampleRates = <String>["44.1 kHz", "96 kHz"];  
+  List<String> sampleRates = <String>["44.1 kHz", "96 kHz"];
   String selectedVal = "44.1 kHz";
   int sampleRate = 44100;
   List<int>? oneCycleData;
@@ -142,24 +142,24 @@ class _MyAppState extends State<ToneGen> {
                       const Text("Sample Rate"),
                       Center(
                           child: DropdownButton(
-                            value: selectedVal,
-                            onChanged: (String? value) {
-                              setState(() {
-                                switch (value){
-                                  case "44.1 kHz":
-                                    sampleRate = 44100;
-                                  case "96 kHz":
-                                    sampleRate = 96000;
-                                }
-                                selectedVal = value!;
-                              });
-                            },
-                            items: sampleRates.map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value));
-                            }).toList(),
-                          )),
+                        value: selectedVal,
+                        onChanged: (String? value) {
+                          setState(() {
+                            switch (value) {
+                              case "44.1 kHz":
+                                sampleRate = 44100;
+                              case "96 kHz":
+                                sampleRate = 96000;
+                            }
+                            selectedVal = value!;
+                          });
+                        },
+                        items: sampleRates
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                      )),
                       const SizedBox(height: 5),
                       const Text("Frequency"),
                       const SizedBox(height: 5),
@@ -180,55 +180,67 @@ class _MyAppState extends State<ToneGen> {
                                     value: frequency,
                                     direction: Axis.horizontal,
                                     onChanged: (value) {
-                                        setState(() {
-                                          if (value.isNaN || value.isInfinite){
-                                            frequency = 20;
-                                            if (kDebugMode) {
-                                              print(frequency);
-                                            }
-                                          }else{
-                                            frequency = value;
-                                          }
-                                          SoundGenerator.setFrequency(frequency);
+                                      setState(() {
+                                        if (value.isNaN || value.isInfinite) {
+                                          frequency = 20;
                                           if (kDebugMode) {
                                             print(frequency);
-                                          }                                            
-                                        });              
+                                          }
+                                        } else {
+                                          frequency = value;
+                                        }
+                                        SoundGenerator.setFrequency(frequency);
+                                        if (kDebugMode) {
+                                          print(frequency);
+                                        }
+                                      });
                                     },
                                   ),
                                 ),
                               ])),
-                              const SizedBox(height: 1),
-                              const Divider(
-                                color: Colors.red,
+                      const SizedBox(height: 1),
+                      const Divider(
+                        color: Colors.red,
+                      ),
+                      const Text("Frequency Sweep"),
+                      const SizedBox(height: 5),
+                      SizedBox(
+                        width: 200,
+                        child: Column(
+                          children: [
+                            TextField(
+                              controller: startingFrequency,
+                              decoration: InputDecoration(
+                                labelText: 'Starting Frequency',
+                                border: OutlineInputBorder(),
                               ),
-                              const Text("Frequency Sweep"),
-                              const SizedBox(height: 5),
-                              SizedBox(
-                                width: 200,
-                                child: Column(
-                                  children: [
-                                    TextField(
-                                      controller: startingFrequency,
-                                      decoration: InputDecoration(
-                                        labelText: 'Starting Frequency',
-                                        border: OutlineInputBorder(),
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                    ),
-                                    SizedBox(height: 5),
-                                    TextField(
-                                      controller: endingFrequency,
-                                      decoration: InputDecoration(
-                                        labelText: 'Ending Frequency',
-                                        border: OutlineInputBorder(),
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                    ),
-                                  ],
-                                ),
-                              ),   
-                    ])))); 
+                              keyboardType: TextInputType.number,
+                            ),
+                            SizedBox(height: 5),
+                            TextField(
+                              controller: endingFrequency,
+                              decoration: InputDecoration(
+                                labelText: 'Ending Frequency',
+                                border: OutlineInputBorder(),
+                              ),
+                              keyboardType: TextInputType.number,
+                            ),
+                            CircleAvatar(
+                                radius: 30,
+                                backgroundColor: Colors.lightBlueAccent,
+                                child: IconButton(
+                                    icon: Icon(isPlaying
+                                        ? Icons.stop
+                                        : Icons.play_arrow),
+                                    onPressed: () {
+                                      isPlaying
+                                          ? SoundGenerator.stop()
+                                          : SoundGenerator.play();
+                                    })),
+                          ],
+                        ),
+                      ),
+                    ]))));
   }
 
   @override
