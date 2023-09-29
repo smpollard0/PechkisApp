@@ -51,6 +51,9 @@ class MyPainter extends CustomPainter {
 class _MyAppState extends State<ToneGen> {
   bool isPlaying = false;
   double frequency = 20;
+  double startSweep = 20;
+  double endSweep = 1000;
+
   TextEditingController startingFrequency = TextEditingController();
   TextEditingController endingFrequency = TextEditingController();
   double balance = 0;
@@ -208,22 +211,35 @@ class _MyAppState extends State<ToneGen> {
                         width: 200,
                         child: Column(
                           children: [
-                            TextField(
-                              controller: startingFrequency,
-                              decoration: InputDecoration(
-                                labelText: 'Starting Frequency',
-                                border: OutlineInputBorder(),
-                              ),
-                              keyboardType: TextInputType.number,
+                            SpinBox(
+                              acceleration: 1,
+                              min: 0,
+                              max: 10000,
+                              value: startSweep,
+                              onChanged: (value) {
+                                setState(() {
+                                  if (value.isNaN || value.isInfinite) {
+                                    startSweep = 20;
+                                  } else {
+                                    startSweep = value;
+                                  }
+                                });
+                              },
                             ),
-                            SizedBox(height: 5),
-                            TextField(
-                              controller: endingFrequency,
-                              decoration: InputDecoration(
-                                labelText: 'Ending Frequency',
-                                border: OutlineInputBorder(),
-                              ),
-                              keyboardType: TextInputType.number,
+                            SpinBox(
+                              acceleration: 1,
+                              min: 0,
+                              max: 10000,
+                              value: endSweep,
+                              onChanged: (value) {
+                                setState(() {
+                                  if (value.isNaN || value.isInfinite) {
+                                    endSweep = 1000;
+                                  } else {
+                                    endSweep = value;
+                                  }
+                                });
+                              },
                             ),
                             CircleAvatar(
                                 radius: 30,
@@ -234,8 +250,18 @@ class _MyAppState extends State<ToneGen> {
                                         : Icons.play_arrow),
                                     onPressed: () {
                                       isPlaying
-                                          ? SoundGenerator.stop()
-                                          : SoundGenerator.play();
+                                          ? {SoundGenerator.stop()}
+                                          : {
+                                              for (var i = startSweep;
+                                                  i < endSweep + .1;
+                                                  i = i + 0.005)
+                                                {
+                                                  SoundGenerator.setFrequency(
+                                                      i),
+                                                  SoundGenerator.play(),
+                                                },
+                                              SoundGenerator.stop()
+                                            };
                                     })),
                           ],
                         ),
