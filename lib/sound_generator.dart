@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:audiophyx/components/drawer.dart';
@@ -53,6 +54,7 @@ class _MyAppState extends State<ToneGen> {
   double frequency = 20;
   double startSweep = 20;
   double endSweep = 1000;
+  var pause = const Duration(seconds: 1);
 
   TextEditingController startingFrequency = TextEditingController();
   TextEditingController endingFrequency = TextEditingController();
@@ -252,15 +254,20 @@ class _MyAppState extends State<ToneGen> {
                                       isPlaying
                                           ? {SoundGenerator.stop()}
                                           : {
+                                              sleep(pause),
                                               print(startSweep),
+                                              print(endSweep),
+                                              SoundGenerator.setFrequency(
+                                                  startSweep),
+                                              SoundGenerator.play(),
                                               for (var i = startSweep;
-                                                  i < endSweep + .1;
-                                                  i = i + 0.005)
+                                                  i <= endSweep;
+                                                  i = i +
+                                                      ((endSweep - startSweep) /
+                                                          200000))
                                                 {
                                                   SoundGenerator.setFrequency(
                                                       i),
-                                                  print(i),
-                                                  SoundGenerator.play(),
                                                 },
                                               SoundGenerator.stop()
                                             };
