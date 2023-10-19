@@ -49,12 +49,33 @@ class MyPainter extends CustomPainter {
   }
 }
 
+class TitleText {
+  static const TextStyle title = TextStyle(
+    fontSize: 24,
+    color: Colors.blueAccent,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle subtitle = TextStyle(
+    fontSize: 18,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle message = TextStyle(
+    fontSize: 12,
+    color: Colors.redAccent,
+    fontWeight: FontWeight.normal,
+    fontStyle: FontStyle.italic,
+  );
+}
+// Impliment:
+// Text('Lorem Ipsum',
+// style: TitleText.title,)
+
 class _MyAppState extends State<ToneGen> {
   bool isPlaying = false;
   double frequency = 20;
   double startSweep = 20;
   double endSweep = 1000;
-  var pause = const Duration(seconds: 1);
 
   TextEditingController startingFrequency = TextEditingController();
   TextEditingController endingFrequency = TextEditingController();
@@ -122,7 +143,7 @@ class _MyAppState extends State<ToneGen> {
                         color: Colors.red,
                       ),
                       const SizedBox(height: 5),
-                      const Text("Wave Form"),
+                      const Text("Wave Form", style: TitleText.subtitle),
                       Center(
                           child: DropdownButton<waveTypes>(
                               value: this.waveType,
@@ -143,8 +164,9 @@ class _MyAppState extends State<ToneGen> {
                       const Divider(
                         color: Colors.red,
                       ),
+                      const Text("Tone Generator", style: TitleText.title),
                       const SizedBox(height: 5),
-                      const Text("Sample Rate"),
+                      const Text("Sample Rate", style: TitleText.subtitle),
                       Center(
                           child: DropdownButton(
                         value: selectedVal,
@@ -166,9 +188,10 @@ class _MyAppState extends State<ToneGen> {
                         }).toList(),
                       )),
                       const SizedBox(height: 5),
-                      const Text("Frequency"),
+                      const Text("Frequency", style: TitleText.subtitle),
                       const SizedBox(height: 5),
-                      const Text("ERROR: DO NOT SET FREQUENCY TO NULL OR ZERO"),
+                      const Text("ERROR: DO NOT SET FREQUENCY TO NULL OR ZERO",
+                          style: TitleText.message),
                       SizedBox(
                           width: double.infinity,
                           height: 40,
@@ -207,12 +230,22 @@ class _MyAppState extends State<ToneGen> {
                       const Divider(
                         color: Colors.red,
                       ),
-                      const Text("Frequency Sweep"),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text("Frequency Sweep", style: TitleText.title),
+                      ),
+
                       const SizedBox(height: 5),
                       SizedBox(
                         width: 200,
                         child: Column(
                           children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text("Starting Frequency",
+                                  style: TitleText.subtitle),
+                            ),
+                            const SizedBox(height: 5),
                             SpinBox(
                               acceleration: 1,
                               min: 0,
@@ -228,8 +261,13 @@ class _MyAppState extends State<ToneGen> {
                                 });
                               },
                             ),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text("Ending Frequency",
+                                  style: TitleText.subtitle),
+                            ),
                             SpinBox(
-                              acceleration: 1,
+                              acceleration: 100,
                               min: 0,
                               max: 10000,
                               value: endSweep,
@@ -243,35 +281,38 @@ class _MyAppState extends State<ToneGen> {
                                 });
                               },
                             ),
-                            CircleAvatar(
-                                radius: 30,
-                                backgroundColor: Colors.lightBlueAccent,
-                                child: IconButton(
-                                    icon: Icon(isPlaying
-                                        ? Icons.stop
-                                        : Icons.play_arrow),
-                                    onPressed: () {
-                                      isPlaying
-                                          ? {SoundGenerator.stop()}
-                                          : {
-                                              sleep(pause),
-                                              print(startSweep),
-                                              print(endSweep),
-                                              SoundGenerator.setFrequency(
-                                                  startSweep),
-                                              SoundGenerator.play(),
-                                              for (var i = startSweep;
-                                                  i <= endSweep;
-                                                  i = i +
-                                                      ((endSweep - startSweep) /
-                                                          200000))
-                                                {
-                                                  SoundGenerator.setFrequency(
-                                                      i),
-                                                },
-                                              SoundGenerator.stop()
-                                            };
-                                    })),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundColor: Colors.lightBlueAccent,
+                                  child: IconButton(
+                                      icon: Icon(isPlaying
+                                          ? Icons.stop
+                                          : Icons.play_arrow),
+                                      onPressed: () {
+                                        isPlaying
+                                            ? {SoundGenerator.stop()}
+                                            : {
+                                                SoundGenerator.setFrequency(
+                                                    startSweep),
+                                                SoundGenerator.play(),
+                                                for (var i = startSweep;
+                                                    i <= endSweep;
+                                                    i = i +
+                                                        ((endSweep -
+                                                                startSweep) /
+                                                            100000))
+                                                  {
+                                                    SoundGenerator.setFrequency(
+                                                        i),
+                                                  },
+                                                print(SoundGenerator
+                                                    .getSampleRate),
+                                                SoundGenerator.stop()
+                                              };
+                                      })),
+                            ),
                           ],
                         ),
                       ),
