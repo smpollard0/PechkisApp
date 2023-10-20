@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'dart:io';
 import 'dart:ui';
 
@@ -71,11 +72,18 @@ class TitleText {
 // Text('Lorem Ipsum',
 // style: TitleText.title,)
 
+late SoundGenerator s1;
+late SoundGenerator s2;
+
 class _MyAppState extends State<ToneGen> {
   bool isPlaying = false;
   double frequency = 20;
   double startSweep = 20;
   double endSweep = 1000;
+  int sweepRate = 100000;
+  List<String> sweepSpeeds = <String>["Slow", "Medium", "Fast"];
+  String selectedSpeed = "Medium";
+  late double current;
 
   TextEditingController startingFrequency = TextEditingController();
   TextEditingController endingFrequency = TextEditingController();
@@ -234,7 +242,28 @@ class _MyAppState extends State<ToneGen> {
                         padding: EdgeInsets.all(8.0),
                         child: Text("Frequency Sweep", style: TitleText.title),
                       ),
-
+                      Center(
+                          child: DropdownButton(
+                        value: selectedSpeed,
+                        onChanged: (String? value) {
+                          setState(() {
+                            switch (value) {
+                              case "Slow":
+                                sweepRate = 200000;
+                              case "Medium":
+                                sweepRate = 100000;
+                              case "Fast":
+                                sweepRate = 40000;
+                            }
+                            selectedSpeed = value!;
+                          });
+                        },
+                        items: sweepSpeeds
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                      )),
                       const SizedBox(height: 5),
                       SizedBox(
                         width: 200,
@@ -294,22 +323,25 @@ class _MyAppState extends State<ToneGen> {
                                         isPlaying
                                             ? {SoundGenerator.stop()}
                                             : {
+                                                SoundGenerator.play(),
                                                 SoundGenerator.setFrequency(
                                                     startSweep),
-                                                SoundGenerator.play(),
-                                                for (var i = startSweep;
-                                                    i <= endSweep;
+                                                for (double i = startSweep;
+                                                    i <= endSweep + 0.1;
                                                     i = i +
                                                         ((endSweep -
                                                                 startSweep) /
-                                                            100000))
+                                                            sweepRate))
                                                   {
+                                                    current = i,
                                                     SoundGenerator.setFrequency(
-                                                        i),
+                                                        current),
                                                   },
-                                                print(SoundGenerator
-                                                    .getSampleRate),
-                                                SoundGenerator.stop()
+                                                print(current),
+                                                SoundGenerator.stop(),
+                                                SoundGenerator.setFrequency(
+                                                    startSweep),
+                                                print(startSweep),
                                               };
                                       })),
                             ),
