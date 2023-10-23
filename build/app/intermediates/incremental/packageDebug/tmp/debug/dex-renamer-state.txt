@@ -1,4 +1,4 @@
-#Mon Sep 11 14:34:36 PDT 2023
+#Wed Sep 13 11:47:01 PDT 2023
 base.0=/home/spencer/Desktop/FlutterPractice/PechkisApp/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/spencer/Desktop/FlutterPractice/PechkisApp/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/home/spencer/Desktop/FlutterPractice/PechkisApp/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
