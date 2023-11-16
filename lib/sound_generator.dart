@@ -72,18 +72,15 @@ class TitleText {
 // Text('Lorem Ipsum',
 // style: TitleText.title,)
 
-late SoundGenerator s1;
-late SoundGenerator s2;
-
 class _MyAppState extends State<ToneGen> {
   bool isPlaying = false;
+  int flag = 0;
   double frequency = 20;
   double startSweep = 20;
   double endSweep = 1000;
-  int sweepRate = 100000;
+  int sweepRate = 1000;
   List<String> sweepSpeeds = <String>["Slow", "Medium", "Fast"];
   String selectedSpeed = "Medium";
-  late double current;
 
   TextEditingController startingFrequency = TextEditingController();
   TextEditingController endingFrequency = TextEditingController();
@@ -144,7 +141,9 @@ class _MyAppState extends State<ToneGen> {
                               onPressed: () {
                                 isPlaying
                                     ? SoundGenerator.stop()
-                                    : SoundGenerator.play();
+                                    : {
+                                        SoundGenerator1.play(),
+                                      };
                               })),
                       const SizedBox(height: 5),
                       const Divider(
@@ -249,11 +248,11 @@ class _MyAppState extends State<ToneGen> {
                           setState(() {
                             switch (value) {
                               case "Slow":
-                                sweepRate = 200000;
+                                sweepRate = 10000;
                               case "Medium":
-                                sweepRate = 100000;
+                                sweepRate = 1000;
                               case "Fast":
-                                sweepRate = 40000;
+                                sweepRate = 100;
                             }
                             selectedSpeed = value!;
                           });
@@ -319,29 +318,28 @@ class _MyAppState extends State<ToneGen> {
                                       icon: Icon(isPlaying
                                           ? Icons.stop
                                           : Icons.play_arrow),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         isPlaying
                                             ? {SoundGenerator.stop()}
                                             : {
-                                                SoundGenerator.play(),
-                                                SoundGenerator.setFrequency(
-                                                    startSweep),
+                                                print(startSweep),
                                                 for (double i = startSweep;
-                                                    i <= endSweep + 0.1;
-                                                    i = i +
-                                                        ((endSweep -
-                                                                startSweep) /
-                                                            sweepRate))
+                                                    i <= endSweep;
+                                                    i++)
                                                   {
-                                                    current = i,
-                                                    SoundGenerator.setFrequency(
-                                                        current),
+                                                    await Future.delayed(
+                                                        Duration(
+                                                            microseconds:
+                                                                sweepRate), () {
+                                                      SoundGenerator
+                                                          .setFrequency(i);
+
+                                                      SoundGenerator.play();
+                                                    })
                                                   },
-                                                print(current),
                                                 SoundGenerator.stop(),
                                                 SoundGenerator.setFrequency(
                                                     startSweep),
-                                                print(startSweep),
                                               };
                                       })),
                             ),
