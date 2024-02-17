@@ -142,7 +142,7 @@ class _MyAppState extends State<ToneGen> {
                                 isPlaying
                                     ? SoundGenerator.stop()
                                     : {
-                                        SoundGenerator1.play(),
+                                        SoundGenerator.play(),
                                       };
                               })),
                       const SizedBox(height: 5),
