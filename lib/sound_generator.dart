@@ -319,28 +319,45 @@ class _MyAppState extends State<ToneGen> {
                                           ? Icons.stop
                                           : Icons.play_arrow),
                                       onPressed: () async {
-                                        isPlaying
-                                            ? {SoundGenerator.stop()}
-                                            : {
-                                                print(startSweep),
-                                                for (double i = startSweep;
-                                                    i <= endSweep;
-                                                    i++)
-                                                  {
-                                                    await Future.delayed(
-                                                        Duration(
-                                                            microseconds:
-                                                                sweepRate), () {
-                                                      SoundGenerator
-                                                          .setFrequency(i);
+                                        if (isPlaying) {
+                                          SoundGenerator.stop();
+                                        } else {
+                                          SoundGenerator.setFrequency(
+                                              startSweep);
+                                          double i = startSweep;
+                                          SoundGenerator.play();
+                                          while (i < endSweep) {
+                                            // SoundGenerator.setFrequency(i);
+                                            await Future.delayed(
+                                                const Duration(
+                                                    milliseconds: 30), () {
+                                              i++;
+                                              SoundGenerator.setFrequency(
+                                                  i); // Future Computation
+                                            });
+                                          }
+                                          SoundGenerator.stop();
+                                          SoundGenerator.setFrequency(
+                                              startSweep);
+                                          // () async {
+                                          //   for (double i = startSweep;
+                                          //       i <= endSweep;
+                                          //       i++) {
+                                          //     await Future.delayed(
+                                          //         Duration(
+                                          //             microseconds:
+                                          //                 sweepRate), () {
+                                          //       SoundGenerator
+                                          //           .setFrequency(i);
 
-                                                      SoundGenerator.play();
-                                                    })
-                                                  },
-                                                SoundGenerator.stop(),
-                                                SoundGenerator.setFrequency(
-                                                    startSweep),
-                                              };
+                                          //       SoundGenerator.play();
+                                          //     });
+                                          //   }
+                                          // },
+                                          // SoundGenerator.stop(),
+                                          // SoundGenerator.setFrequency(
+                                          //     startSweep),
+                                        }
                                       })),
                             ),
                           ],
