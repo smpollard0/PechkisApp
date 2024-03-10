@@ -4,14 +4,14 @@
             "outputFile": "com.example.audiophyx.app-mergeDebugResources-13:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/main/res/values-night/styles.xml",
+                    "source": "C:\\Users\\Michael\\Repos\\PechkisApp\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
-                        "startOffsets": "172,817",
+                        "startOffsets": "175,831",
                         "endLines": "7,16",
                         "endColumns": "12,12",
-                        "endOffsets": "475,981"
+                        "endOffsets": "482,997"
                     },
                     "to": {
                         "startLines": "2,6",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/spencer/.gradle/caches/transforms-3/09a71f45a2f110948b735c42a8fac7af/transformed/appcompat-1.2.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "C:\\Users\\Michael\\.gradle\\caches\\transforms-3\\09a71f45a2f110948b735c42a8fac7af\\transformed\\appcompat-1.2.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

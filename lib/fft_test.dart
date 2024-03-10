@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:audiophyx/components/drawer.dart';
@@ -67,35 +66,34 @@ class _MyHomePageState extends State<MyHomePage> {
         print(buttonPressed);
       }
 
-    //   setState(() {});
-      
-    //   // need to add formal null checking for anything dealing with a future or stream
-    //   if (isRecording){
-    //     record();
-    //   }
-    //   else{
-    //     // build data set from micdata to graph
-    //     int size = micData.length;
-    //     double time = size / sampleRate;
-    //     // List<double> timeData = linspace(0.0, time, num: size);
+      //   setState(() {});
 
+      //   // need to add formal null checking for anything dealing with a future or stream
+      //   if (isRecording){
+      //     record();
+      //   }
+      //   else{
+      //     // build data set from micdata to graph
+      //     int size = micData.length;
+      //     double time = size / sampleRate;
+      //     // List<double> timeData = linspace(0.0, time, num: size);
 
-    //     // for (var i = 0; i < timeData.length; i++){
-    //     //   _realData.add(FunctionData(timeData[i], micData[i]));
-    //     // }
+      //     // for (var i = 0; i < timeData.length; i++){
+      //     //   _realData.add(FunctionData(timeData[i], micData[i]));
+      //     // }
 
-    //     // generateFFT(_realData);
+      //     // generateFFT(_realData);
 
-    //     if (kDebugMode) {
-    //       print("Test");
-    //     }
+      //     if (kDebugMode) {
+      //       print("Test");
+      //     }
 
-    //     setState(() {});
-        
-    //   }
-    // }
-    // else {
-    //   throw Exception('Microphone permission not granted');
+      //     setState(() {});
+
+      //   }
+      // }
+      // else {
+      //   throw Exception('Microphone permission not granted');
     }
   }
 
@@ -108,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
     List<List<FunctionData>> result = [];
 
     // build fftFunc list for fft object
-    for (var i = 0; i < noisyFunc.length; i++){
+    for (var i = 0; i < noisyFunc.length; i++) {
       fftFunc.add(noisyFunc[i].function);
     }
 
@@ -119,8 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Array freq = createArrayRange(stop: size);
 
     // go through the amplitudes and zero out the ones that are lower than a certain threshold
-    for (var i = 0; i < tempData.length; i++){
-      if (amplitudes[i] < 0 || i == 0){ 
+    for (var i = 0; i < tempData.length; i++) {
+      if (amplitudes[i] < 0 || i == 0) {
         tempData[i] = Float64x2(0, 0);
         amplitudes[i] = 0;
       }
@@ -128,11 +126,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final iFFT = fft.realInverseFft(tempData);
 
-    for (var i = 0; i < amplitudes.length; i++){
+    for (var i = 0; i < amplitudes.length; i++) {
       _specData.add(FunctionData(freq[i], amplitudes[i]));
       _fftFunc.add(FunctionData(timeData[i], iFFT.elementAt(i)));
     }
-    
+
     result.add(_specData);
     result.add(_fftFunc);
 
@@ -147,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _zoomPanBehavior = ZoomPanBehavior(
       enablePinching: true,
       enablePanning: true,
-      );
+    );
     super.initState();
   }
 
@@ -169,23 +167,17 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         selectedIndex: currentPageIndex,
-        destinations: const <Widget> [
-          NavigationDestination(
-            icon: Icon(Icons.raw_on),
-            label: 'Raw Data'
-            ),
+        destinations: const <Widget>[
+          NavigationDestination(icon: Icon(Icons.raw_on), label: 'Raw Data'),
           NavigationDestination(
             icon: Icon(Icons.poll),
             label: 'PSD',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.broken_image),
-            label: 'iFFT'
-          ),
+          NavigationDestination(icon: Icon(Icons.broken_image), label: 'iFFT'),
         ],
       ),
       drawer: getDrawer(context),
-      body: <Widget> [
+      body: <Widget>[
         SingleChildScrollView(
           child: Center(
             child: Column(
@@ -195,16 +187,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 300,
                   width: double.infinity,
                   child: SfCartesianChart(
-                    title: ChartTitle(text: 'Raw Microphone Data'),
-                    series: <ChartSeries>[
-                      LineSeries<FunctionData, double>(
-                        dataSource: _realData,
-                        xValueMapper: (FunctionData func, _) => func.time,
-                        yValueMapper: (FunctionData func, _) => func.function
-                      )
-                    ],
-                    zoomPanBehavior: _zoomPanBehavior
-                  ),
+                      title: ChartTitle(text: 'Raw Microphone Data'),
+                      series: <ChartSeries>[
+                        LineSeries<FunctionData, double>(
+                            dataSource: _realData,
+                            xValueMapper: (FunctionData func, _) => func.time,
+                            yValueMapper: (FunctionData func, _) =>
+                                func.function)
+                      ],
+                      zoomPanBehavior: _zoomPanBehavior),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
@@ -213,17 +204,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     onSelected: (SampleItem item) {
                       setState(() {
                         selectedMenu = item;
-                        if (item == SampleItem.itemOne){
+                        if (item == SampleItem.itemOne) {
                           if (kDebugMode) {
                             print("Item one chosen");
                           }
-                        }
-                        else if (item == SampleItem.itemTwo){
+                        } else if (item == SampleItem.itemTwo) {
                           if (kDebugMode) {
                             print("Item two chosen");
                           }
-                        }
-                        else if (item == SampleItem.itemThree){
+                        } else if (item == SampleItem.itemThree) {
                           if (kDebugMode) {
                             print("Item three chosen");
                           }
@@ -231,10 +220,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                     icon: const Icon(Icons.settings),
-                    itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
+                    itemBuilder: (BuildContext context) =>
+                        <PopupMenuEntry<SampleItem>>[
                       const PopupMenuItem<SampleItem>(
                         value: SampleItem.itemOne,
-                        child: Text('Item 1'),  
+                        child: Text('Item 1'),
                       ),
                       const PopupMenuItem<SampleItem>(
                         value: SampleItem.itemTwo,
@@ -249,56 +239,57 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 FloatingActionButton(
                   onPressed: () async {
-                    if (buttonPressed){
+                    if (buttonPressed) {
                       buttonPressed = false;
                       stopwatch.stop();
                       stopwatch.reset();
                       listener.cancel();
                       timer!.cancel();
-                    }
-                    else {
+                    } else {
                       buttonPressed = true;
                       stopwatch.start();
 
                       /* recording logic goes here */
                       stream = await MicStream.microphone(
-                      audioSource: AudioSource.DEFAULT,
-                      sampleRate: sampleRate,
-                      channelConfig: ChannelConfig.CHANNEL_IN_MONO);
-                      
+                          audioSource: AudioSource.DEFAULT,
+                          sampleRate: sampleRate,
+                          channelConfig: ChannelConfig.CHANNEL_IN_MONO);
+
                       // CURRENT ISSUE: MICROPHONE DATA IS INITALLY NULL AND IT GIVES ERRORS ON FIRST BUTTON PRESS
 
                       List<double> floatList = [];
 
                       listener = stream!.listen((samples) {
-                        if (stopwatch.elapsedMilliseconds < 1000 ){
+                        if (stopwatch.elapsedMilliseconds < 1000) {
                           micData.add(samples);
-                          for (var i = 0; i < micData.length; i++){
-                            for (var j = 0; j < micData[i].length; j++){
+                          for (var i = 0; i < micData.length; i++) {
+                            for (var j = 0; j < micData[i].length; j++) {
                               floatList.add(micData[i][j].toDouble());
                             }
                           }
                         }
                       });
 
-                      timer = Timer.periodic(const Duration(milliseconds: 5000), (_) async {
+                      timer = Timer.periodic(const Duration(milliseconds: 5000),
+                          (_) async {
                         if (kDebugMode) {
                           print(stopwatch.elapsedMilliseconds);
                         }
                         stopwatch.reset();
                       });
 
-                      
                       micData = [];
 
-                      for (var i = 0; i < floatList.length; i++){
+                      for (var i = 0; i < floatList.length; i++) {
                         if (kDebugMode) {
                           print(floatList[i]);
                         }
                       }
 
                       int size = micData.length;
-                      List<double> timeData = linspace(0.0, floatList.length.toDouble() / 1000, num: size); // the upperbound here is wrong
+                      List<double> timeData = linspace(
+                          0.0, floatList.length.toDouble() / 1000,
+                          num: size); // the upperbound here is wrong
 
                       if (kDebugMode) {
                         print(floatList.length);
@@ -313,7 +304,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                     setState(() {});
                   },
-                  child: (buttonPressed) ? const Icon(Icons.stop) : const Icon(Icons.mic),
+                  child: (buttonPressed)
+                      ? const Icon(Icons.stop)
+                      : const Icon(Icons.mic),
                 ),
               ],
             ),
@@ -328,28 +321,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 300,
                   width: double.infinity,
                   child: SfCartesianChart(
-                    title: ChartTitle(text: 'Power Spectrum Distribution'),
-                    series: <ChartSeries>[
-                      LineSeries<FunctionData, double>(
-                        dataSource: _specData,
-                        xValueMapper: (FunctionData func, _) => func.time,
-                        yValueMapper: (FunctionData func, _) => func.function
-                      )
-                    ],
-                    zoomPanBehavior: _zoomPanBehavior
-                  ),
+                      title: ChartTitle(text: 'Power Spectrum Distribution'),
+                      series: <ChartSeries>[
+                        LineSeries<FunctionData, double>(
+                            dataSource: _specData,
+                            xValueMapper: (FunctionData func, _) => func.time,
+                            yValueMapper: (FunctionData func, _) =>
+                                func.function)
+                      ],
+                      zoomPanBehavior: _zoomPanBehavior),
                 ),
                 Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    onPressed: () {
-                      if (kDebugMode) {
-                        print("Pressed Settings Button");
-                      }
-                    },
-                    icon: const Icon(Icons.settings)
-                  )
-                ),
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                        onPressed: () {
+                          if (kDebugMode) {
+                            print("Pressed Settings Button");
+                          }
+                        },
+                        icon: const Icon(Icons.settings))),
               ],
             ),
           ),
@@ -363,33 +353,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 300,
                   width: double.infinity,
                   child: SfCartesianChart(
-                    title: ChartTitle(text: 'Inverse Fourier Transform'),
-                    series: <ChartSeries>[
-                      LineSeries<FunctionData, double>(
-                        dataSource: _fftFunc,
-                        xValueMapper: (FunctionData func, _) => func.time,
-                        yValueMapper: (FunctionData func, _) => func.function
-                      )
-                    ],
-                    zoomPanBehavior: _zoomPanBehavior
-                  ),
+                      title: ChartTitle(text: 'Inverse Fourier Transform'),
+                      series: <ChartSeries>[
+                        LineSeries<FunctionData, double>(
+                            dataSource: _fftFunc,
+                            xValueMapper: (FunctionData func, _) => func.time,
+                            yValueMapper: (FunctionData func, _) =>
+                                func.function)
+                      ],
+                      zoomPanBehavior: _zoomPanBehavior),
                 ),
                 Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    onPressed: () {
-                      if (kDebugMode) {
-                        print("Pressed Settings Button");
-                      }
-                    },
-                    icon: const Icon(Icons.settings)
-                  )
-                ),
+                    alignment: Alignment.bottomRight,
+                    child: IconButton(
+                        onPressed: () {
+                          if (kDebugMode) {
+                            print("Pressed Settings Button");
+                          }
+                        },
+                        icon: const Icon(Icons.settings))),
               ],
             ),
           ),
         ),
-      ] [currentPageIndex],
+      ][currentPageIndex],
     );
   }
 }

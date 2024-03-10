@@ -4,12 +4,12 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
-6-->/home/spencer/.pub-cache/hosted/pub.dev/mic_stream-0.6.5/android/src/main/AndroidManifest.xml
+6-->C:\Users\Michael\AppData\Local\Pub\Cache\hosted\pub.dev\mic_stream-0.6.5\android\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="33" />
-7-->/home/spencer/.pub-cache/hosted/pub.dev/mic_stream-0.6.5/android/src/main/AndroidManifest.xml
+7-->C:\Users\Michael\AppData\Local\Pub\Cache\hosted\pub.dev\mic_stream-0.6.5\android\src\main\AndroidManifest.xml
 8
 9    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-9-->/home/spencer/.pub-cache/hosted/pub.dev/mic_stream-0.6.5/android/src/main/AndroidManifest.xml:3:5-70
-9-->/home/spencer/.pub-cache/hosted/pub.dev/mic_stream-0.6.5/android/src/main/AndroidManifest.xml:3:22-68
+9-->C:\Users\Michael\AppData\Local\Pub\Cache\hosted\pub.dev\mic_stream-0.6.5\android\src\main\AndroidManifest.xml:3:5-70
+9-->C:\Users\Michael\AppData\Local\Pub\Cache\hosted\pub.dev\mic_stream-0.6.5\android\src\main\AndroidManifest.xml:3:22-68
 10
 11</manifest>

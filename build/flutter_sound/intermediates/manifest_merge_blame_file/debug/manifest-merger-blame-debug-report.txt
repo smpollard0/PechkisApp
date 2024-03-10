@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="18"
-6-->/home/spencer/.pub-cache/hosted/pub.dev/flutter_sound-9.2.13/android/src/main/AndroidManifest.xml
+6-->C:\Users\Michael\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_sound-9.2.13\android\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="18" />
-7-->/home/spencer/.pub-cache/hosted/pub.dev/flutter_sound-9.2.13/android/src/main/AndroidManifest.xml
+7-->C:\Users\Michael\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_sound-9.2.13\android\src\main\AndroidManifest.xml
 8
 9</manifest>

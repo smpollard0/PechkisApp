@@ -13,35 +13,35 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/debug/AndroidManifest.xml:6:5-66
-15-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/debug/AndroidManifest.xml:6:22-64
+15-->C:\Users\Michael\Repos\PechkisApp\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->C:\Users\Michael\Repos\PechkisApp\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-16-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/main/AndroidManifest.xml:2:5-71
-16-->/home/spencer/Desktop/FlutterPractice/audiophyx/android/app/src/main/AndroidManifest.xml:2:22-68
+16-->C:\Users\Michael\Repos\PechkisApp\android\app\src\main\AndroidManifest.xml:2:5-71
+16-->C:\Users\Michael\Repos\PechkisApp\android\app\src\main\AndroidManifest.xml:2:22-68
 17    <uses-permission android:name="android.permission.BLUETOOTH" />
-17-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:11:5-68
-17-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:11:22-65
+17-->[com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Michael\.gradle\caches\transforms-3\d4c72099a184a6068ced9f5a4d5244ee\transformed\jetified-flutter_sound_core-9.2.13\AndroidManifest.xml:11:5-68
+17-->[com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Michael\.gradle\caches\transforms-3\d4c72099a184a6068ced9f5a4d5244ee\transformed\jetified-flutter_sound_core-9.2.13\AndroidManifest.xml:11:22-65
 18    <uses-permission android:name="android.permission.WAKE_LOCK" />
-18-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:12:5-68
-18-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:12:22-65
+18-->[com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Michael\.gradle\caches\transforms-3\d4c72099a184a6068ced9f5a4d5244ee\transformed\jetified-flutter_sound_core-9.2.13\AndroidManifest.xml:12:5-68
+18-->[com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Michael\.gradle\caches\transforms-3\d4c72099a184a6068ced9f5a4d5244ee\transformed\jetified-flutter_sound_core-9.2.13\AndroidManifest.xml:12:22-65
 19    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-19-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:13:5-80
-19-->[com.github.canardoux:flutter_sound_core:9.2.13] /home/spencer/.gradle/caches/transforms-3/d4c72099a184a6068ced9f5a4d5244ee/transformed/jetified-flutter_sound_core-9.2.13/AndroidManifest.xml:13:22-77
+19-->[com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Michael\.gradle\caches\transforms-3\d4c72099a184a6068ced9f5a4d5244ee\transformed\jetified-flutter_sound_core-9.2.13\AndroidManifest.xml:13:5-80
+19-->[com.github.canardoux:flutter_sound_core:9.2.13] C:\Users\Michael\.gradle\caches\transforms-3\d4c72099a184a6068ced9f5a4d5244ee\transformed\jetified-flutter_sound_core-9.2.13\AndroidManifest.xml:13:22-77
 20
 21    <queries>
-21-->[androidx.media:media:1.4.1] /home/spencer/.gradle/caches/transforms-3/33aeac6041f7f32f65addefb234a1ba0/transformed/media-1.4.1/AndroidManifest.xml:24:5-28:15
+21-->[androidx.media:media:1.4.1] C:\Users\Michael\.gradle\caches\transforms-3\33aeac6041f7f32f65addefb234a1ba0\transformed\media-1.4.1\AndroidManifest.xml:24:5-28:15
 22        <intent>
-22-->[androidx.media:media:1.4.1] /home/spencer/.gradle/caches/transforms-3/33aeac6041f7f32f65addefb234a1ba0/transformed/media-1.4.1/AndroidManifest.xml:25:9-27:18
+22-->[androidx.media:media:1.4.1] C:\Users\Michael\.gradle\caches\transforms-3\33aeac6041f7f32f65addefb234a1ba0\transformed\media-1.4.1\AndroidManifest.xml:25:9-27:18
 23            <action android:name="android.media.browse.MediaBrowserService" />
-23-->[androidx.media:media:1.4.1] /home/spencer/.gradle/caches/transforms-3/33aeac6041f7f32f65addefb234a1ba0/transformed/media-1.4.1/AndroidManifest.xml:26:13-79
-23-->[androidx.media:media:1.4.1] /home/spencer/.gradle/caches/transforms-3/33aeac6041f7f32f65addefb234a1ba0/transformed/media-1.4.1/AndroidManifest.xml:26:21-76
+23-->[androidx.media:media:1.4.1] C:\Users\Michael\.gradle\caches\transforms-3\33aeac6041f7f32f65addefb234a1ba0\transformed\media-1.4.1\AndroidManifest.xml:26:13-79
+23-->[androidx.media:media:1.4.1] C:\Users\Michael\.gradle\caches\transforms-3\33aeac6041f7f32f65addefb234a1ba0\transformed\media-1.4.1\AndroidManifest.xml:26:21-76
 24        </intent>
 25    </queries>
 26
 27    <application
 28        android:name="android.app.Application"
 29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-29-->[androidx.core:core:1.6.0] /home/spencer/.gradle/caches/transforms-3/7e9df2ac2213a6bd3cef0f2f27870d79/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+29-->[androidx.core:core:1.6.0] C:\Users\Michael\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 30        android:debuggable="true"
 31        android:icon="@mipmap/ic_launcher"
 32        android:label="audiophyx" >
@@ -79,17 +79,17 @@
 64            android:value="2" />
 65
 66        <uses-library
-66-->[androidx.window:window:1.0.0-beta04] /home/spencer/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+66-->[androidx.window:window:1.0.0-beta04] C:\Users\Michael\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 67            android:name="androidx.window.extensions"
-67-->[androidx.window:window:1.0.0-beta04] /home/spencer/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+67-->[androidx.window:window:1.0.0-beta04] C:\Users\Michael\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 68            android:required="false" />
-68-->[androidx.window:window:1.0.0-beta04] /home/spencer/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+68-->[androidx.window:window:1.0.0-beta04] C:\Users\Michael\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 69        <uses-library
-69-->[androidx.window:window:1.0.0-beta04] /home/spencer/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+69-->[androidx.window:window:1.0.0-beta04] C:\Users\Michael\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 70            android:name="androidx.window.sidecar"
-70-->[androidx.window:window:1.0.0-beta04] /home/spencer/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+70-->[androidx.window:window:1.0.0-beta04] C:\Users\Michael\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 71            android:required="false" />
-71-->[androidx.window:window:1.0.0-beta04] /home/spencer/.gradle/caches/transforms-3/25cee5f028ac2a6b79fd6278ff5b59e2/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+71-->[androidx.window:window:1.0.0-beta04] C:\Users\Michael\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 72    </application>
 73
 74</manifest>
